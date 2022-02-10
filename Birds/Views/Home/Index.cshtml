@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row col-lg-12"  style="background-color:lavender" >
+    <div class="col-lg-4 panel-danger col align-items-start">
+        <h3>What a Bird!</h3>
+        <p class="lead  ">
+            This site contains information about @Birds.Models.BirdCount.objectCount().ToString() different birds you just have to know.
+        </p>
+        <b>Beginners guide to the birds universe.</b>
+        <!--  <p><a href="¨~/bird" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>-->
+    </div>
+
+    <div class="col-lg-4 col align-items-center">
+    </div>
+    
+    <div class="col-lg-4 col align-items-end">
+        <h3>Sikke en fugl!</h3>
+        <p class="lead">Denne side indeholder information om @Birds.Models.BirdCount.objectCount().ToString() forskellige fugle, som du bare må kende.</p>
+        <b>Nybegynders manuel til fulgenes univers.</b>
+        <!--  <p><a href="¨~/bird" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>-->
+    </div>
+</div>
+
+<div class="row col-lg-12 ">
+    <div class="col-md-4 col align-items-start">
+        <p>
+            <br />
+            <img src="https://grynberg.dk/images/cover2.jpg" style="height:250px" />
+        </p>
+        <h4>Start learning</h4>
+        <p><a class="btn btn-default" href="~/Bird">Se Birds &raquo;</a></p>
+    </div>
+
+
+    <div class="col-md-4 col align-items-center">
+        <br />
+        <img src="https://grynberg.dk/images/cover3.jpg" style="height:250px" />
+    </div>
+
+    <div class="col-md-4 col align-items-end">
+        <br />
+        <img src="https://grynberg.dk/images/cover1.jpg" style="height:250px" />
+        <h4>View all</h4>
+        <p><a class="btn btn-default" href="~/Bird/BirdsList">Birds Overview &raquo;</a></p>
+
+    </div>
+</div>

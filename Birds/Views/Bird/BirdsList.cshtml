@@ -1,0 +1,80 @@
+﻿@model IEnumerable<WhatABird.Models.BirdModel>
+@{
+    ViewBag.Title = "Birds List";
+  
+    int ident = 0;
+    string dkid = "";
+    string enid = "";
+    string ltid = "";
+    string widkid = "";
+    string wienid = "";
+   // string LatinAudio = "";
+}
+<row class="row col-lg-12" style="background-color:lavender">
+    <div class="col-lg-2 col-sm-1" > <h3>Birds List</h3></div>
+    <div class="col-lg-2 col-sm-1"> <h3>Fugle liste</h3></div>
+    <div class="col-lg-2 col-sm-1"><h3>Wiki</h3></div>
+
+</row>   
+<p>
+    <!--@Html.ActionLink("Create New", "Create")-->
+</p>
+<table class="table">
+    @foreach (var item in Model)
+    {
+        dkid = "dk" + ident.ToString();
+        enid = "en" + ident.ToString();
+        ltid = "lt" + ident.ToString();
+        widkid = "wdDk" + ident.ToString();
+        wienid = "wien" + ident.ToString();
+        item.LatinAudio = ("https://grynberg.dk/SoundTracks/lt/" + item.Latin_name + ".mp3").Replace(" ","_");
+        //item.LatinAudio = LatinAudio.Replace(" ", "_");
+
+        <tr>
+            <td class=" col-lg-2 col-sm-1">
+                <div id="@dkid" role="button"
+                     onclick="play('@item.Name_reader_dk')"
+                     onmouseover="changeTextStyle('@dkid','i')"
+                     onmouseout="changeTextStyle('@dkid','x')">
+                    <h4><b>@Html.DisplayFor(modelItem => item.Name_dk)</b></h4>
+                </div>
+                <div id="@enid" role="button"
+                     onclick="play('@item.Name_reader_en')"
+                     onmouseover="changeTextStyle('@enid','i')"
+                     onmouseout="changeTextStyle('@enid','x')">
+                    <h4><b>@Html.DisplayFor(modelItem => item.Name_en)</b></h4>
+                </div>
+                <div id="@ltid" role="button"
+                     onclick="play('@item.LatinAudio')"
+                     onmouseover="changeTextStyle('@ltid','i')"
+                     onmouseout="changeTextStyle('@ltid','x')">
+                    <h4><b>@Html.DisplayFor(modelItem => item.Latin_name)</b></h4>
+                </div>
+            </td>
+            <td class="col-lg-2 col-sm-1">
+                <img role="button" src="@Html.DisplayFor(modelItem => item.Imageurl)"
+                     title="@item.Name_en@Environment.NewLine@item.Name_dk@Environment.NewLine@item.Latin_name"
+                     style="height:100px"
+                     onclick="play('@item.Birdsong')" />
+                <br />
+
+            </td>
+            <td>
+                <div class="row">
+
+                    <a id="@widkid" href="https://dk.wikipedia.org/wiki/@item.Latin_name" style="color:black"
+                       onmouseover="changeTextStyle('@widkid','i')"
+                       onmouseout="changeTextStyle('@widkid','x')"><h4>Wiki (Dansk)</h4></a>
+
+                    <div />
+
+                    <a id="@wienid" href="https://en.wikipedia.org/wiki/@item.Latin_name" style="color:black"
+                       onmouseover="changeTextStyle('@wienid','i')"
+                       onmouseout="changeTextStyle('@wienid','x')"><h4>Wiki (English)</h4></a>
+                </div>
+
+            </td>
+        </tr>
+        ident++;
+    }
+</table>

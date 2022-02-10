@@ -1,0 +1,103 @@
+﻿@model IEnumerable<WhatABird.Models.BirdModel>
+@{ 
+    string[] eng_names = new string[3];
+    string[] dk_names = new string[3];
+    int i = 0;
+    int currentBird = 0;
+    string birdsong="";
+    string correctBird = "";
+}
+
+<div class="row">
+    <div class="col-md-6" justrify-content-center style="background-color:lavender">
+        <h4>What a bird!!?</h4>
+        <p></p>
+        <h5>Are you familiar with this bird?</h5>
+        <p></p>
+        <a href="/bird/Index" class="btn btn-info">Next Bird</a>
+    </div>
+    <div class="col-md-6" justrify-content-center style="background-color:lavender">
+        <h4>Sikke en fugl!!?</h4>
+        <p></p>
+        <h5>Kender du denne fugl?</h5>
+        <p></p>
+        <a href="/bird/Index" class="btn btn-info">N&aelig;ste Fugl</a>
+    </div>
+</div>
+<div class="row">
+@foreach (var item in Model)
+{
+    eng_names[i] = item.Name_en;
+    dk_names[i] = item.Name_dk;
+   
+    if (item.Birdsong != "NIX")
+        {
+            currentBird = i;
+            birdsong = item.Birdsong;
+            <div class="col-md-6">
+            <img src=@item.Imageurl title="@item.Name_en@Environment.NewLine@item.Name_dk@Environment.NewLine@item.Latin_name"
+                 style="height:150px">
+            <br />
+            <br />
+            <img id="BtnEn" role="button" src="https://grynberg.dk/images/unionjack.jpg"
+                 onmousedown="changeImg('BtnEn', 'https://grynberg.dk/images/unionjackDown.jpg')"
+                 onmouseup  ="changeImg('BtnEn', 'https://grynberg.dk/images/unionjack.jpg')"
+                 onmouseout ="changeImg('BtnEn', 'https://grynberg.dk/images/unionjack.jpg')"
+                 onclick    ="play('@item.Name_reader_en')"><b>The birds english name.</b><img/>
+            <br />
+            <br />
+            <img id="BtnDk" role="button" src="https://grynberg.dk/images/dannebrog.jpg"
+                 onmousedown="changeImg('BtnDk', 'https://grynberg.dk/images/dannebrogNed.jpg')"
+                 onmouseup  ="changeImg('BtnDk', 'https://grynberg.dk/images/dannebrog.jpg')"
+                 onmouseout ="changeImg('BtnDk', 'https://grynberg.dk/images/dannebrog.jpg')"
+                 onclick    ="play('@item.Name_reader_dk')"><b>Fuglens danske navn.</b>
+           </div>
+        }
+        i++;
+    }
+    <div class="col-mg-6">
+        <div class="btn-group">
+            <h3>Find the bird </h3>
+            <br />
+            @for (int j = 0; j < 3; j++)
+            {
+                if (j != currentBird)
+                {
+                    correctBird = "https://grynberg.dk/SoundTracks/songs/nope.mp3";
+                }
+                else
+                {
+                    correctBird = birdsong;
+                }
+                <a class="btn btn-default" 
+                   onmouseover="this.style.color = 'orange';"
+                   onmouseout ="this.style.color = 'black';"
+                   onclick    ="play('@correctBird')">
+                    <b>@eng_names[j]</b>
+                </a>
+            }
+            <br />
+            <br />
+            <h3>Find fuglen</h3> <br />
+            @for (int k = 0; k < 3; k++)
+            {
+                if (k != currentBird)
+                {
+                    correctBird = "https://grynberg.dk/SoundTracks/songs/nix.mp3";
+                }
+                else
+                {
+                    correctBird = birdsong;
+                }
+                <a class="btn btn-default"
+                   onmouseover ="this.style.color = 'orange';"
+                   onmouseout  ="this.style.color = 'black';" 
+                   onclick     ="play('@correctBird')"
+                   onmousemove ="this.textstyle.italic">
+                   <b>@dk_names[k]</b>
+                </a>
+            }
+        </div>
+    </div>
+</div>
+
