@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="GetDataFromSite.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Secret.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
