@@ -41,7 +41,7 @@ namespace DataManager
                     byte[] result = cryptoTransform.TransformFinalBlock(data, 0, data.Length);
                     string retVal = UTF8Encoding.UTF8.GetString(result);
                     retVal = CharArrToStr(MasterArrExchange(Masterarrey(retVal), 1), true);
-                    retVal = "Server = mssql8.unoeuro.com; Database = grynberg_dk_db_test; User Id = grynberg_dk; Password = )" + retVal + " ;";
+                    retVal = "Server = mssql8.unoeuro.com; Database = ; User Id = ; Password = )" + retVal + " ;";
                     return retVal;
                 }
             }
