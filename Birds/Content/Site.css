@@ -22,3 +22,123 @@ select,
 textarea {
     max-width: 280px;
 }
+
+html {
+    /*font-size: 16px;*/
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    /*background-color: blanchedalmond;*/
+}
+
+.toollabel {
+    position: relative;
+    display: inline-block;
+}
+
+    .toollabel .toollabeltext {
+        visibility: hidden;
+        width: max-content;
+        /*font-size: 1rem;*/
+        /*background-color: blanchedalmond;*/
+        color: #000;
+        text-align: left;
+        font-weight: 600;
+        border-radius: 6px;
+        border: solid 1px;
+        border-color: black;
+        padding: 3px;
+        /* Position the tooltip */
+        position: absolute;
+        z-index: 1;
+    }
+
+    .toollabel:hover .toollabeltext {
+        visibility: visible;
+    }
+
+.animPic {
+    /*background-color: blanchedalmond;*/
+}
+
+    .animPic img:hover {
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+
+.Gameover {
+    animation: Gameover 1.2s infinite;
+    font-size: 170px;
+    /*background-color: blanchedalmond;*/
+    color: #ff6a00;
+    text-align: center;
+}
+
+@keyframes Gameover {
+    0% {
+        color: #ff6a00;
+    }
+
+    49% {
+        color: #ff6a00;
+    }
+
+    60% {
+        color: transparent;
+    }
+
+    99% {
+        color: transparent;
+    }
+
+    100% {
+        color: #ff6a00;
+    }
+}
+
+.gameTable {
+    width: 100%;
+}
+
+.Result {
+    /*background-color: blanchedalmond;*/
+    font-size: 100px;
+    text-align: center;
+}
+
+.column {
+    float: left;
+    width: 25%;
+    padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.tableCell {
+    font-size: 1em;
+}
+
+/*img {
+    background-color: blanchedalmond;
+}
+
+select {
+    background-color: blanchedalmond;
+}*/

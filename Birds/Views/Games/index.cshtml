@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Birds Game settings";
+}
+<h2>@ViewData["Title"]</h2>
+<br />
+<div class="row">
+    <div class="column">
+        <form action="/Games/MemoryGame/?level=level&cheatmode=cheatmode">
+            <H3 class="animPic" style="border:black; border-width:5px; border-style:outset; width:fit-content; align-content:center; padding:10px">
+                <img id="mega1_en" src="https://grynberg.dk/images/megaphone.png" width="16" height="16"
+                     onClick="playThis(this)" alt="megaGameLevel_en" />
+                <label for="level"><b>Select game level:</b></label><br />
+                <img id="mega2_dk" src="https://grynberg.dk/images/megaphone.png" width="16" height="16" alt="megaspilniveau_dk"
+                     onclick="playThis(this)" />
+                <label><b>Vælg spilniveau:</b></label><br />
+                <img id="mega3_en" src="https://grynberg.dk/images/megaphone.png" width="16" height="16"
+                     alt="LevelDropDown" onclick="playThis(this)" />
+                <select name="level" id="gameLevel" style="border:double">
+                    <br />
+                    <option value="easypeasy">Easy peasy</option>
+                    <option value="notsoeasy">Not So Easy</option>
+                    <option value="hardy">Hard But Doable</option>
+                    <option value="impossible">It's impossible</option>
+                </select>  <br /> <br />
+                <img id="mega4_en" src="https://grynberg.dk/images/megaphone.png" width="16" height="16"
+                     alt="megaGameMode_en" onclick="playThis(this)" />
+                <label for="cheatmode"><b>Select game mode:</b></label><br />
+                <img id="mega5_dk" src="https://grynberg.dk/images/megaphone.png" width="16" height="16"
+                     onclick="playThis(this)" alt="megaspillemaade_dk" />
+                <label for="cheatmode"><b>Vælg spillemåde:</b></label><br />
+                <img id="mega6_en" src="https://grynberg.dk/images/megaphone.png" width="16" height="16"
+                     alt="megaBeHonest_en" onclick="playThis(this)" />
+                <input type="radio" name="cheatmode" value="no" checked> Be honest
+                <br />
+                <img id="mega7_en" src="https://grynberg.dk/images/megaphone.png" width="16" height="16"
+                     alt="megacheat_en" onclick="playThis(this)" />
+                <input type="radio" name="cheatmode" value="yes"> Cheat like hell
+                <br /><br />
+            </H3>
+            <b><input type="submit" value="Play game" size="200" style="font-size:56px; font-weight:900" /></b>
+        </form>
+    </div>
+    <div class="column animPic">
+        <img src="https://grynberg.dk/images/blis.png" onclick='playSound("https://grynberg.dk/SoundTracks/songs/blishoene.mp3",1000)' /><br />
+        <b>
+            Yes,- you may tickle the poultry.<img id="mega8_en" src="https://grynberg.dk/images/megaphone.png" width="16" height="16"
+                                                  alt="megaTickle_en" onclick='playThis(this)' />
+        </b><br />
+        <b>
+            Ja,- du må gerne kilde fjerkræet.<img id="mega9_dk" src="https://grynberg.dk/images/megaphone.png" width="16" height="16"
+                                                  alt="megakilde_dk" onclick='playThis(this)' />
+        </b>
+    </div>
+</div>

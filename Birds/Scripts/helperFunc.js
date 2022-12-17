@@ -1,4 +1,6 @@
-﻿function play(x) {
+﻿
+
+function play(x) {
   //  x = x.replace(" ", "_");
     var audio = new Audio(x);
     audio.play();
@@ -17,3 +19,5 @@ function changeTextStyle(id, e) {
         document.getElementById(id).style.font = "normal bold 20px arial,serif";
     }
 }
+
+

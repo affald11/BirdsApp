@@ -6,6 +6,8 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http.Headers;
+using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -86,7 +88,6 @@ namespace DataManager
                 throw ex;
             }
         }
-
         public static string ReadDataStringFromSite(string urlStr)
         {
             try
@@ -101,10 +102,39 @@ namespace DataManager
             {
                 throw ex;
             }
+        }     
+    }
+    public static class JsonUtil
+    {
+        public static HttpClient WClient { get; set; } 
+
+        private const string _BaseUrl = @"https://grynberg.dk";
+        public static string JsonData { get; set; } = "";
+        public static void InitializeWClient()
+        {
+            WClient = new HttpClient();
+            WClient.BaseAddress = new Uri(_BaseUrl);
+            WClient.DefaultRequestHeaders.Accept.Clear();
+            WClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-       
-        
+        public async static Task GetStringFromWeb(string url = "/data/BirdsData3.json")
+        {
+            InitializeWClient();
+            HttpResponseMessage response = await JsonUtil.WClient.GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                byte[] JsonByte = await response.Content.ReadAsByteArrayAsync();
+                JsonData = Encoding.UTF8.GetString(JsonByte);
+                response.Dispose();
+            }
+            else
+            {
+                response.Dispose();
+                throw new Exception(response.ReasonPhrase);
+
+            }
+        }
     }
 }
    

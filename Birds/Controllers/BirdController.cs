@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WhatABird.Models;
+using System.Threading.Tasks;
 
 namespace Birds.Controllers
 {
@@ -14,21 +15,28 @@ namespace Birds.Controllers
     {
         private List<BirdModel> _BirdsList;
         private string _JsonUrl;
+        private string _data;
         private int[] rendomBirds;
         public List<BirdModel> tmpList = new List<BirdModel>();
         public string test;
         // GET: Bird
 
-        public ActionResult BirdsList()
+        public async Task<ActionResult> BirdsList()
         {
-            Initialize();
+            //Initialize();
+            await JsonUtil.GetStringFromWeb();
+            _data = JsonUtil.JsonData;
+            _BirdsList = JsonConvert.DeserializeObject<List<BirdModel>>(_data);
             return View(_BirdsList.OrderBy(x => x.Name_dk).ToList());
         }
 
-        public ActionResult Index()
+        public async Task<ActionResult>  Index()
         {
             List<BirdModel> tmpList = new List<BirdModel>();
-            Initialize();
+            await JsonUtil.GetStringFromWeb();
+            _data = JsonUtil.JsonData;
+            _BirdsList = JsonConvert.DeserializeObject<List<BirdModel>>(_data);
+            // Initialize();
             rendomBirds = GetDataFromSite.GetRendomNumbers(0, _BirdsList.Count, 3);
             int chosenOne = GetDataFromSite.GetRendomNumbers(0, 3, 1)[0];
 

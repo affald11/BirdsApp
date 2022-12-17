@@ -1,0 +1,81 @@
+﻿@model IEnumerable<WhatABird.Models.BirdModel>
+@{
+    ViewData["Title"] = "Birds on my mind";
+
+    int i = 0;
+    int j = 0;
+    string birdName = "";
+    string imgId = "";
+    string divId = "";
+    string audioName = "";
+    string language = "";
+    string backCover = "https://grynberg.dk/images/BackCover.png";
+    int imageSize = 50;
+    int columnsNumber = 0;
+    int recordCount = Model.Count();
+    string textSize = "60";
+    string innerDiv = "";
+    string cheat = ViewBag.CheatMode;
+    string level = ViewBag.level;
+    string imgTitle = "";
+    string flag = "";
+
+    for (i = 2; i < Model.Count(); i++)
+    {
+        columnsNumber = i;
+        if ((Model.Count() / i) < i - (recordCount / 10)) { break; }
+    }
+    if (level == "easypeasy") { imageSize = 110; textSize = "110"; }
+    else if (level == "notsoeasy") { imageSize = 80; textSize = "90"; }
+    else if (level == "hardy") { imageSize = 60; textSize = "80"; }
+    else if (level == "impossible") { imageSize = 50; textSize = "70"; }
+}
+
+
+<table clas="gameTable" id="gameBord" class="table" border="1">
+    @foreach (var itm in Model)
+    {
+        imgId = "img" + j.ToString();
+        divId = "div" + j.ToString();
+        innerDiv = "innerDiv" + j.ToString();
+
+        if (itm.Id <= 0)
+        {
+            birdName = @itm.Name_dk; language = "dk";
+            imgTitle = @itm.Name_en; audioName = itm.Name_reader_dk; flag = "https://grynberg.dk/images/unionjack.jpg";
+        }
+
+        else
+        {
+            birdName = @itm.Name_en; language = "en";
+            imgTitle = @itm.Name_dk; audioName = itm.Name_reader_en; flag = "https://grynberg.dk/images/dannebrog.jpg";
+        }
+        if (cheat == "no")
+        {
+            birdName = "";
+            imgTitle = "";
+        }
+
+        if (i == 0)
+        {
+            @:<tr>
+            }
+
+            <td style="font-size:@textSize%">
+                    <div class="animPic" id="@divId" width="@imageSize" height="@imageSize"><p>
+            <img class="BirdImg" id="@imgId" width="@imageSize.ToString()" height="@imageSize.ToString()" src="@Html.DisplayFor(birdImage=> backCover)"
+            onclick="flipImage('@imgId','@itm.Imageurl','@audioName','@cheat')" lang='@language' flipped="n" bird-voice="@itm.Birdsong" state="unclicked"
+            latinName="@itm.Latin_name" /><div id="innerDiv"><p><div class="toollabel">@birdName<span class="toollabeltext"><img src="@flag" />@imgTitle</span>
+            </div></div></div></td>
+                        i++;
+                        j++;
+
+                        if ((Model.Count() == j) || (i == columnsNumber))
+                        {
+                        @:</tr>
+                    }
+                    i = i % columnsNumber;
+                }
+
+</table>
+<div><b>Number of hits: <label id="hit" data-const="0">0 </label> out of <label id="trial" data-const="0">0</label> trials</b></div>

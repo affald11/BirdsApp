@@ -10,7 +10,8 @@ namespace Birds
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                          "~/Scripts/jquery-{version}.js",
-                         "~/Scripts/helperFunc.js"));
+                         "~/Scripts/helperFunc.js",
+                         "~/Scripts/Site.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -25,7 +26,7 @@ namespace Birds
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/Site.css"));
         }
     }
 }
