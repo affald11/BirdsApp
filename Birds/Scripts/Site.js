@@ -64,6 +64,7 @@ function checkMatch() {
     let hitTmp = document.getElementById("hit");
     hits = parseInt(hitTmp.getAttribute("data-const"));
     let gameover = false;
+    let pNode = flippedItems[0].parentNode;
 
     if (flippedItems.length > 1) {
         if (flippedItems[0].getAttribute("latinName") == flippedItems[1].getAttribute("latinName")) {
@@ -85,11 +86,25 @@ function checkMatch() {
                         itm.textContent = "";
                     }
                 });
+
                 audio.pause(); audio.currentTime = 0;
                 flippedItems[0].setAttribute('src', empty);
                 flippedItems[1].setAttribute('src', empty);
                 flippedItems[0].setAttribute('flipped', "n");
                 flippedItems[1].setAttribute('flipped', "n");
+              
+                while (pNode.getAttribute("class") != "animPic")
+                {
+                    pNode = pNode.parentNode;
+                }
+                pNode.classList.remove('animPic');
+
+                pNode = flippedItems[1].parentNode;
+                while (pNode.getAttribute("class") != "animPic") {
+                    pNode = pNode.parentNode;
+                }
+                pNode.classList.remove('animPic');
+
                 hits++;
                 hitTmp.setAttribute("data-const", hits.toString());
                 hitTmp.innerHTML = hits.toString();
@@ -98,6 +113,7 @@ function checkMatch() {
         }
         else {
             let audio = new Audio(nopSound);
+
             audio.play();
             setTimeout(function () {
                 audio.pause(); audio.currentTime = 0;
@@ -128,6 +144,7 @@ function gameOverCheck() {
         tab.appendChild(div);
         let res = document.createElement('div');
         res.className = "Result";
+        res.classList.add("animPic");
         let albert = document.createElement('img');
         albert.setAttribute('src', genius);
         tab.appendChild(res);
@@ -153,13 +170,15 @@ function playThis(obj) {
     let soundUrl = "";
     let altText = obj.alt;
 
-    if (altText == 'LevelDropDown') {
-        el = document.getElementById("gameLevel").value;
+    if ((altText == 'LevelDropDown') || (altText == 'LanguageDropDown')) {
+        el = document.getElementById(altText).value;
         soundUrl = baseSoundUrl + "en/" + "mega" + el + mp3SoundType;
+       
     }
     else {
         let fileOrgin = obj.alt.split("_");
         soundUrl = baseSoundUrl + fileOrgin[1] + "/" + fileOrgin[0] + mp3SoundType;
     }
+    //console.log(soundUrl);
     playSound(soundUrl, 0);
 }

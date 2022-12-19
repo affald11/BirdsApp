@@ -24,19 +24,24 @@ namespace Birds.Views.Games
         {
             return View();
         }
-        public async Task<ActionResult> MemoryGame(string level = "easypeasy", string cheatMode = "no")
+        public async Task<ActionResult> MemoryGame(string level = "easypeasy", string cheatMode = "no",int langCombi=0 )
         {
-            // _data= GetDataFromSite.ReadDataStringFromSite(_JsonUrl);
             await JsonUtil.GetStringFromWeb();
             _data = JsonUtil.JsonData;
-
             Random rnd = new Random();
             int birdsRecordsNo = 0;
             int recordCounter = 0;
             ViewData["CheatMode"] = cheatMode;
             ViewData["level"] = level;
-            _BirdsGameList = JsonConvert.DeserializeObject<List<BirdModel>>(_data).OrderBy(a=> rnd.Next()).ToList();
-            //DeserializeJson(_JsonUrl);
+            ViewBag.Lang = langCombi;
+            _BirdsGameList = JsonConvert.DeserializeObject<List<BirdModel>>(_data);
+            if (!Enumerable.Range(0, 3).Contains(langCombi))
+            {
+                langCombi = 0;
+            }
+            ViewData["langCombi"] = langCombi;
+
+
             switch (level)
             {
                 case "easypeasy":
@@ -57,6 +62,21 @@ namespace Birds.Views.Games
             {
 
                 BirdModel bird = new BirdModel();
+                switch (langCombi) 
+                {
+                    case 0:
+                        break; 
+                    case 1:
+                        itm.Name_en = itm.Latin_name;
+                        itm.Name_reader_en = (@"https://grynberg.dk/SoundTracks/lt/" + itm.Latin_name + ".mp3").Replace(" ", "_");                       
+                       
+                        break; 
+                    case 2:
+                        itm.Name_dk = itm.Latin_name;
+                        itm.Name_reader_dk = (@"https://grynberg.dk/SoundTracks/lt/" + itm.Latin_name + ".mp3").Replace(" ", "_");
+                        break;
+                   
+                }
                 bird.Name_dk = itm.Name_dk;
                 bird.Id = 0 - itm.Id;
                 bird.Name_en = itm.Name_en;

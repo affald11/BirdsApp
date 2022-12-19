@@ -5,7 +5,7 @@
 <br />
 <div class="row">
     <div class="column">
-        <form action="/Games/MemoryGame/?level=level&cheatmode=cheatmode">
+        <form action="/Games/MemoryGame/?level=level&cheatmode=cheatmode&langCombi=langCombi">
             <H3 class="animPic" style="border:black; border-width:5px; border-style:outset; width:fit-content; align-content:center; padding:10px">
                 <img id="mega1_en" src="https://grynberg.dk/images/megaphone.png" width="16" height="16"
                      onClick="playThis(this)" alt="megaGameLevel_en" />
@@ -16,12 +16,27 @@
                 <img id="mega3_en" src="https://grynberg.dk/images/megaphone.png" width="16" height="16"
                      alt="LevelDropDown" onclick="playThis(this)" />
                 <select name="level" id="gameLevel" style="border:double">
-                    <br />
                     <option value="easypeasy">Easy peasy</option>
                     <option value="notsoeasy">Not So Easy</option>
                     <option value="hardy">Hard But Doable</option>
                     <option value="impossible">It's impossible</option>
-                </select>  <br /> <br />
+                </select><br /><br />
+
+                <img id="mega8_en" src="https://grynberg.dk/images/megaphone.png" width="16" height="16"
+                alt="megaSelectLang_en" onclick="playThis(this)" />
+                <label><b>Select language:</b></label><br />
+                <img id="mega9_dk" src="https://grynberg.dk/images/megaphone.png" width="16" height="16"
+                alt="megaVaelgSprog_dk" onclick="playThis(this)" />
+                <label><b>Vælg sprog:</b></label><br />
+
+                <img id="mega9_dk" src="https://grynberg.dk/images/megaphone.png" width="16" height="16"
+                     alt="LanguageDropDown" onclick="playThis(this)" />
+                <select name="langCombi" id="LanguageDropDown" style="border:double">
+                    <option value=0>Danish - English</option>
+                    <option value=1>Danish - Latin</option>
+                    <option value=2>English - Latin</option>
+                </select>  <br /><br />
+
                 <img id="mega4_en" src="https://grynberg.dk/images/megaphone.png" width="16" height="16"
                      alt="megaGameMode_en" onclick="playThis(this)" />
                 <label for="cheatmode"><b>Select game mode:</b></label><br />
@@ -37,7 +52,7 @@
                 <input type="radio" name="cheatmode" value="yes"> Cheat like hell
                 <br /><br />
             </H3>
-            <b><input type="submit" value="Play game" size="200" style="font-size:56px; font-weight:900" /></b>
+            <b><input type="submit" value="Play" size="200" style="font-size:45px; font-weight:900" /></b>
         </form>
     </div>
     <div class="column animPic">

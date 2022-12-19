@@ -52,7 +52,7 @@ body {
         visibility: hidden;
         width: max-content;
         /*font-size: 1rem;*/
-        /*background-color: blanchedalmond;*/
+        background-color: blanchedalmond;
         color: #000;
         text-align: left;
         font-weight: 600;
@@ -110,13 +110,17 @@ body {
 
 .gameTable {
     width: 100%;
+    border: 1px;
+    padding: 50px;
 }
-
+    .gameTable tr td {
+        border:none;
+    }
 .Result {
-    /*background-color: blanchedalmond;*/
-    font-size: 100px;
-    text-align: center;
-}
+        /*background-color: blanchedalmond;*/
+        font-size: 100px;
+        text-align: center;
+    }
 
 .column {
     float: left;
