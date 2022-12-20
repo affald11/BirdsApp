@@ -1,10 +1,12 @@
 ﻿@{
-    ViewData["Title"] = "Birds Game settings";
+    ViewData["TitleEn"] = "Game settings";
+    ViewData["TitleDk"] = "Spilindstillinger";
 }
-<h2>@ViewData["Title"]</h2>
+
 <br />
 <div class="row">
     <div class="column">
+        <h2 class="text-info">@ViewData["TitleEn"]</h2>
         <form action="/Games/MemoryGame/?level=level&cheatmode=cheatmode&langCombi=langCombi">
             <H3 class="animPic" style="border:black; border-width:5px; border-style:outset; width:fit-content; align-content:center; padding:10px">
                 <img id="mega1_en" src="https://grynberg.dk/images/megaphone.png" width="16" height="16"
@@ -13,9 +15,9 @@
                 <img id="mega2_dk" src="https://grynberg.dk/images/megaphone.png" width="16" height="16" alt="megaspilniveau_dk"
                      onclick="playThis(this)" />
                 <label><b>Vælg spilniveau:</b></label><br />
-                <img id="mega3_en" src="https://grynberg.dk/images/megaphone.png" width="16" height="16"
-                     alt="LevelDropDown" onclick="playThis(this)" />
-                <select name="level" id="gameLevel" style="border:double">
+                <img id="mega3_en" src="https://grynberg.dk/images/megaphone.png" width="16" height="16" alt="LevelDropDown" onclick="playThis(this)" />
+
+                <select name="level" id="LevelDropDown" style="border:double">
                     <option value="easypeasy">Easy peasy</option>
                     <option value="notsoeasy">Not So Easy</option>
                     <option value="hardy">Hard But Doable</option>
@@ -23,10 +25,10 @@
                 </select><br /><br />
 
                 <img id="mega8_en" src="https://grynberg.dk/images/megaphone.png" width="16" height="16"
-                alt="megaSelectLang_en" onclick="playThis(this)" />
+                     alt="megaSelectLang_en" onclick="playThis(this)" />
                 <label><b>Select language:</b></label><br />
                 <img id="mega9_dk" src="https://grynberg.dk/images/megaphone.png" width="16" height="16"
-                alt="megaVaelgSprog_dk" onclick="playThis(this)" />
+                     alt="megaVaelgSprog_dk" onclick="playThis(this)" />
                 <label><b>Vælg sprog:</b></label><br />
 
                 <img id="mega9_dk" src="https://grynberg.dk/images/megaphone.png" width="16" height="16"
@@ -56,6 +58,7 @@
         </form>
     </div>
     <div class="column animPic">
+        <h2 class="text-info">@ViewData["TitleDk"]</h2>
         <img src="https://grynberg.dk/images/blis.png" onclick='playSound("https://grynberg.dk/SoundTracks/songs/blishoene.mp3",1000)' /><br />
         <b>
             Yes,- you may tickle the poultry.<img id="mega8_en" src="https://grynberg.dk/images/megaphone.png" width="16" height="16"

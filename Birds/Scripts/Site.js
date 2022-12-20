@@ -168,10 +168,12 @@ function playSound(audioUrl, duration = 0) {
 
 function playThis(obj) {
     let soundUrl = "";
+    let el = null;
     let altText = obj.alt;
-
+    console.log(obj);
+    console.log(altText);
     if ((altText == 'LevelDropDown') || (altText == 'LanguageDropDown')) {
-        el = document.getElementById(altText).value;
+        let el = document.getElementById(altText).value;
         soundUrl = baseSoundUrl + "en/" + "mega" + el + mp3SoundType;
        
     }
@@ -179,6 +181,6 @@ function playThis(obj) {
         let fileOrgin = obj.alt.split("_");
         soundUrl = baseSoundUrl + fileOrgin[1] + "/" + fileOrgin[0] + mp3SoundType;
     }
-    //console.log(soundUrl);
+    console.log(soundUrl);
     playSound(soundUrl, 0);
 }

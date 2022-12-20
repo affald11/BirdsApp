@@ -138,6 +138,13 @@ body {
 .tableCell {
     font-size: 1em;
 }
+.image_container{
+    margin:auto
+}
+.image_container img{
+    width:100%;
+    
+}
 
 /*img {
     background-color: blanchedalmond;

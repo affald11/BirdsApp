@@ -12,7 +12,8 @@
     string audioName = "";
     string language = "";
     string backCover = "https://grynberg.dk/images/BackCover.png";
-    int imageSize = 50;
+    string imageSizeW = "50vw";
+    string imageSizeH = "50vh";
     int columnsNumber = 0;
     int recordCount = Model.Count();
     string textSize = "60";
@@ -28,10 +29,10 @@
         columnsNumber = i;
         if ((Model.Count() / i) < i - (recordCount / 10)) { break; }
     }
-    if (level == "easypeasy") { imageSize = 110; textSize = "110"; }
-    else if (level == "notsoeasy") { imageSize = 80; textSize = "90"; }
-    else if (level == "hardy") { imageSize = 60; textSize = "80"; }
-    else if (level == "impossible") { imageSize = 50; textSize = "70"; }
+    if (level == "easypeasy") { imageSizeW = "100vw"; imageSizeH = "100vh"; textSize = "110"; }
+    else if (level == "notsoeasy") { imageSizeW = "70vw"; imageSizeH = "70vh"; textSize = "90"; }
+    else if (level == "hardy") { imageSizeW = "56vw"; imageSizeH = "56vh"; textSize = "80"; }
+    else if (level == "impossible") { imageSizeW = "40vm"; imageSizeH = "40vh"; textSize = "55"; }
 }
 
 <table clas="gameTable" id="gameBord" class="table" border=0>
@@ -70,8 +71,8 @@
             @:<tr>
         }
         <td style="font-size:@textSize%">
-        <div class="animPic" id="@divId" width="@imageSize" height="@imageSize"><p>
-        <img class="BirdImg" id="@imgId" width="@imageSize.ToString()" height="@imageSize.ToString()" src="@Html.DisplayFor(birdImage=> backCover)"
+        <div class="animPic" id="@divId" width="@imageSizeW" height="@imageSizeH"><p>
+        <img class="BirdImg" id="@imgId" width="@imageSizeW" height="@imageSizeH" src="@Html.DisplayFor(birdImage=> backCover)"
         onclick="flipImage('@imgId','@itm.Imageurl','@audioName','@cheat')" lang='@language' flipped="n" bird-voice="@itm.Birdsong" state="unclicked"
         latinName="@itm.Latin_name" /><div id="innerDiv"><p><div class="toollabel">@birdName<span class="toollabeltext"><img src="@flag" />@imgTitle</span>
         </div></div></div></td>
