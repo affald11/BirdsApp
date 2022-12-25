@@ -1,14 +1,15 @@
-﻿const bckCover = "https://grynberg.dk/images/BackCover.png";
-const empty = "https://grynberg.dk/images/EmptySpace.jpg";
-const nopSound = "https://grynberg.dk/SoundTracks/songs/nope.mp3";
-const baseSoundUrl = "https://grynberg.dk/SoundTracks/";
-const baseImageUrl = 'https://grynberg.dk/images/';
+﻿const bckCover = "https://birds.grynberg.dk/images/BackCover.png";
+const empty = "https://birds.grynberg.dk/images/EmptySpace.jpg";
+const nopSound = "https://birds.grynberg.dk/SoundTracks/songs/nope.mp3";
+const baseSoundUrl = "https://birds.grynberg.dk/SoundTracks/";
+const baseImageUrl = 'https://birds.grynberg.dk/images/';
 const genius = baseImageUrl + 'albert.png';
 const mp3SoundType = ".mp3";
-
 let flippedItems = [];
 
+
 function flipImage(id, urlImg, reader, cheatMode = "yes") {
+    console.log('kuk');
     flippedItems = document.querySelectorAll("[flipped='y']");
 
     let choosenCords = flippedItems.length;
@@ -54,6 +55,7 @@ function flipImage(id, urlImg, reader, cheatMode = "yes") {
     }
 }
 
+
 function checkMatch() {
     flippedItems = document.querySelectorAll("[flipped='y']");
     let soundTrak = "";
@@ -92,9 +94,11 @@ function checkMatch() {
                 flippedItems[1].setAttribute('src', empty);
                 flippedItems[0].setAttribute('flipped', "n");
                 flippedItems[1].setAttribute('flipped', "n");
-              
-                while (pNode.getAttribute("class") != "animPic")
-                {
+                flippedItems[0].setAttribute('title', "The birds has flown.");
+                flippedItems[1].setAttribute('title', "Fuglen er fløjet.");
+
+
+                while (pNode.getAttribute("class") != "animPic") {
                     pNode = pNode.parentNode;
                 }
                 pNode.classList.remove('animPic');
@@ -175,7 +179,7 @@ function playThis(obj) {
     if ((altText == 'LevelDropDown') || (altText == 'LanguageDropDown')) {
         let el = document.getElementById(altText).value;
         soundUrl = baseSoundUrl + "en/" + "mega" + el + mp3SoundType;
-       
+
     }
     else {
         let fileOrgin = obj.alt.split("_");

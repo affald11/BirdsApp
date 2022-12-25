@@ -108,7 +108,7 @@ namespace DataManager
     {
         public static HttpClient WClient { get; set; } 
 
-        private const string _BaseUrl = @"https://grynberg.dk";
+        private const string _BaseUrl = @"https://birds.grynberg.dk";
         public static string JsonData { get; set; } = "";
         public static void InitializeWClient()
         {
@@ -118,7 +118,7 @@ namespace DataManager
             WClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public async static Task GetStringFromWeb(string url = "/data/BirdsData3.json")
+        public async static Task GetStringFromWeb(string url = "/data/BirdsData2.json")
         {
             InitializeWClient();
             HttpResponseMessage response = await JsonUtil.WClient.GetAsync(url);

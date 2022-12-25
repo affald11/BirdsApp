@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<WhatABird.Models.BirdModel>
 @{
     ViewData["Title"] = "Birds on my mind";
-    const string FlagDK = "https://grynberg.dk/images/dannebrog.jpg";
-    const string FlagGB = "https://grynberg.dk/images/unionjack.jpg";
-    const string FlagVA = "https://grynberg.dk/images/vatican.jpg";
+    const string FlagDK = "https://birds.grynberg.dk/images/dannebrog.jpg";
+    const string FlagGB = "https://birds.grynberg.dk/images/unionjack.jpg";
+    const string FlagVA = "https://birds.grynberg.dk/images/vatican.jpg";
     int i = 0;
     int j = 0;
     string birdName = "";
@@ -11,7 +11,7 @@
     string divId = "";
     string audioName = "";
     string language = "";
-    string backCover = "https://grynberg.dk/images/BackCover.png";
+    string backCover = "https://birds.grynberg.dk/images/BackCover.png";
     string imageSizeW = "50vw";
     string imageSizeH = "50vh";
     int columnsNumber = 0;
@@ -70,11 +70,12 @@
         {
             @:<tr>
         }
-        <td style="font-size:@textSize%">
+      
+        <td style="font-size:@textSize">
         <div class="animPic" id="@divId" width="@imageSizeW" height="@imageSizeH"><p>
         <img class="BirdImg" id="@imgId" width="@imageSizeW" height="@imageSizeH" src="@Html.DisplayFor(birdImage=> backCover)"
         onclick="flipImage('@imgId','@itm.Imageurl','@audioName','@cheat')" lang='@language' flipped="n" bird-voice="@itm.Birdsong" state="unclicked"
-        latinName="@itm.Latin_name" /><div id="innerDiv"><p><div class="toollabel">@birdName<span class="toollabeltext"><img src="@flag" />@imgTitle</span>
+        latinName="@itm.Latin_name"><div id="innerDiv"><p><div class="toollabel">@birdName<span class="toollabeltext"><img src="@flag">@imgTitle</span>
         </div></div></div></td>
 
         i++;

@@ -20,4 +20,3 @@ function changeTextStyle(id, e) {
     }
 }
 
-

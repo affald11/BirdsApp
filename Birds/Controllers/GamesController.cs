@@ -68,12 +68,12 @@ namespace Birds.Views.Games
                         break; 
                     case 1:
                         itm.Name_en = itm.Latin_name;
-                        itm.Name_reader_en = (@"https://grynberg.dk/SoundTracks/lt/" + itm.Latin_name + ".mp3").Replace(" ", "_");                       
+                        itm.Name_reader_en = (@"https://birds.grynberg.dk/SoundTracks/lt/" + itm.Latin_name + ".mp3").Replace(" ", "_");                       
                        
                         break; 
                     case 2:
                         itm.Name_dk = itm.Latin_name;
-                        itm.Name_reader_dk = (@"https://grynberg.dk/SoundTracks/lt/" + itm.Latin_name + ".mp3").Replace(" ", "_");
+                        itm.Name_reader_dk = (@"https://birds.grynberg.dk/SoundTracks/lt/" + itm.Latin_name + ".mp3").Replace(" ", "_");
                         break;
                    
                 }
