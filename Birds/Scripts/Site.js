@@ -172,7 +172,6 @@ function playSound(audioUrl, duration = 0) {
 
 function playThis(obj) {
     let soundUrl = "";
-    let el = null;
     let altText = obj.alt;
     console.log(obj);
     console.log(altText);

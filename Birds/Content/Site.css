@@ -145,11 +145,10 @@ body {
     width:100%;
     
 }
-
-/*img {
-    background-color: blanchedalmond;
+#Blits{
+    width:1rem;
+    flex-wrap:wrap-reverse;
 }
-
-select {
-    background-color: blanchedalmond;
-}*/
+.handy:hover {
+    cursor: pointer;
+}

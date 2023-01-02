@@ -21,7 +21,7 @@ namespace Birds.Controllers
         public string test;
         // GET: Bird
 
-        public async Task<ActionResult> BirdsList()
+        public async Task<ActionResult> BirdsList(string artname="")
         {
             //Initialize();
             await JsonUtil.GetStringFromWeb();
